@@ -18,4 +18,4 @@ RUN curl -LO https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin
 
 COPY scripts/entrypoint.sh entrypoint.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+CMD ["./entrypoint.sh"]
