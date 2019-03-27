@@ -3,7 +3,7 @@
 A toolset image for managing Kubernetes deployments on AWS EKS.
 
 ### CircleCI Build Status
-[![CircleCI](https://circleci.com/gh/appvia/docker-kube-toolset.svg?style=svg)](https://circleci.com/gh/appvia/docker-kube-toolset)
+[![CircleCI](https://circleci.com/gh/appvia/docker-aws-eks-toolset.svg?style=svg)](https://circleci.com/gh/appvia/docker-aws-eks-toolset)
 
 ## Overview
 This container provides the following utilities to assist in interacting with a Kubernetes Cluster build on EKS.

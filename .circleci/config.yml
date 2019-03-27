@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  build_latest:
+    docker:
+      - image: docker:18.06.3-dind
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build image
+          command: docker build -t quay.io/appvia/aws-eks-toolset:$CIRCLE_SHA1 .
+      - run:
+          name: Push image latest
+          command: |
+            docker tag quay.io/appvia/aws-eks-toolset:$CIRCLE_SHA1 quay.io/appvia/aws-eks-toolset:latest
+            docker login quay.io --username $QUAY_USERNAME --password $QUAY_PASSWORD
+            docker push quay.io/appvia/aws-eks-toolset:$CIRCLE_SHA1
+            docker push quay.io/appvia/aws-eks-toolset:latest
+  build_tag:
+    docker:
+      - image: docker:18.06.3-dind
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build image
+          command: docker build -t quay.io/appvia/aws-eks-toolset:$CIRCLE_TAG .
+      - run:
+          name: Push image tag
+          command: |
+            docker login quay.io --username $QUAY_USERNAME --password $QUAY_PASSWORD
+            docker push quay.io/appvia/aws-eks-toolset:$CIRCLE_TAG
+
+workflows:
+  version: 2
+  build_and_upload_latest:
+    jobs:
+      - build_latest:
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              ignore: /.*/
+  build_and_upload_tag:
+    jobs:
+      - build_tag:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
