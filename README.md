@@ -23,4 +23,4 @@ You must supply the following environment variables when running the image:
 * AWS_ACCESS_KEY_ID
 * AWS_SECRET_ACCESS_KEY
 
-The image will setup `kubectl` access to your cluster automatically and check connectivity.
+Run the image with `-it` and run `/setup.sh` to configure `kubectl` and test connectivity.

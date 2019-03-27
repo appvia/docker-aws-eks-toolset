@@ -11,5 +11,3 @@ echo "--> Updating kubeconfig for access to \"${CLUSTER_NAME}\ in region \"${AWS
 aws eks update-kubeconfig --name ${CLUSTER_NAME} --region ${AWS_REGION}
 echo "--> Verifying kubectl access"
 kubectl version
-
-/bin/bash
