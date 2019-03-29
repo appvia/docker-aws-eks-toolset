@@ -2,7 +2,7 @@
 
 A toolset image for managing Kubernetes deployments on AWS EKS.
 
-### CircleCI Build Status
+### Build status
 [![CircleCI](https://circleci.com/gh/appvia/docker-aws-eks-toolset.svg?style=svg)](https://circleci.com/gh/appvia/docker-aws-eks-toolset)
 [![Docker Repository on Quay](https://quay.io/repository/appvia/aws-eks-toolset/status "Docker Repository on Quay")](https://quay.io/repository/appvia/aws-eks-toolset)
 
