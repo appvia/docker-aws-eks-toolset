@@ -1,12 +1,17 @@
 FROM alpine:3.10
 
 # install base packages
-RUN apk add curl bash groff less python py-pip
+RUN apk add curl bash groff less python py-pip coreutils openssl
 
 # install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
     chmod +x ./kubectl && \
     mv ./kubectl /usr/local/bin/kubectl
+
+# install helm
+RUN curl -LO https://git.io/get_helm.sh && \
+    chmod 700 get_helm.sh && \
+    ./get_helm.sh
 
 # install AWS CLI
 RUN pip install awscli
