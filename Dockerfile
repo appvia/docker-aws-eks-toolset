@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10
 
 # install base packages
 RUN apk add curl bash groff less python py-pip
@@ -16,6 +16,10 @@ RUN curl -LO https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin
     chmod +x ./aws-iam-authenticator && \
     mv ./aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
 
-COPY scripts/setup.sh setup.sh
+COPY scripts/docker-entrypoint.sh docker-entrypoint.sh
+
+LABEL com.circleci.preserve-entrypoint=true
+
+ENTRYPOINT ["./docker-entrypoint.sh"]
 
 CMD ["/bin/bash"]
